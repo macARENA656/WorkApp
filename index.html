@@ -20,13 +20,20 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
+            /* Изменено: Добавлен фон с изображением и затемнением */
+            background: linear-gradient(rgba(10, 14, 20, 0.8), rgba(10, 14, 20, 0.9)), 
+                        url('your-image.jpg'); /* Замените на путь к вашему фото */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.5;
+            min-height: 100vh;
         }
         .app-card {
             background-color: var(--panel-dark);
             border: 1px solid #30363d;
+            backdrop-filter: blur(8px); /* Добавлен эффект размытия для карточки */
         }
         .btn-primary {
             background-color: var(--accent-blue);
@@ -37,7 +44,7 @@
         }
         .sidebar-mockup {
             border-left: 1px solid #30363d;
-            background: #0d1117;
+            background: rgba(13, 17, 23, 0.8);
         }
     </style>
 </head>
@@ -74,7 +81,7 @@
         <div class="max-w-5xl mx-auto">
             <div class="app-card rounded-lg overflow-hidden shadow-2xl flex flex-col md:flex-row">
                 <!-- Контентная часть (Графики) -->
-                <div class="flex-[2] p-6 min-h-[300px] bg-[#0d1117]">
+                <div class="flex-[2] p-6 min-h-[300px] bg-[#0d1117]/90">
                     <div class="flex justify-between items-center mb-8">
                         <div class="flex space-x-2">
                             <div class="w-6 h-6 border border-slate-700 rounded flex items-center justify-center text-[10px] text-slate-500 hover:bg-slate-800 cursor-pointer">&lt;</div>
@@ -143,7 +150,7 @@
     </section>
 
     <!-- Характеристики -->
-    <section class="max-w-5xl mx-auto px-4 py-12 border-t border-slate-800">
+    <section class="max-w-5xl mx-auto px-4 py-12 border-t border-slate-800 bg-[#0a0e14]/50 backdrop-blur-sm rounded-t-xl">
         <div class="grid md:grid-cols-4 gap-8">
             <div>
                 <h5 class="text-xs font-bold uppercase mb-2 text-slate-200">Безопасность</h5>
@@ -165,7 +172,7 @@
     </section>
 
     <!-- Финальный призыв -->
-    <footer id="download" class="py-20 bg-[#0d1117] border-t border-slate-800">
+    <footer id="download" class="py-20 bg-[#0d1117]/90 border-t border-slate-800">
         <div class="max-w-2xl mx-auto text-center px-4">
             <h3 class="text-xl font-bold mb-6">Готов к работе</h3>
             <div class="inline-flex flex-col items-center p-6 border border-slate-800 rounded-xl bg-[#0a0e14]">
