@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ValorTime 2.0 — Учет Времени</title>
+    <title>Учет Времени — Профессиональный контроль часов</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,15 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
+            /* Оптимизация фона: убираем fixed для мобильных и оставляем только для десктопа */
             background: linear-gradient(rgba(10, 14, 20, 0.85), rgba(10, 14, 20, 0.95)), 
-                        url('your-image.jpg');
+                        url('img/3.png');
             background-size: cover;
             background-position: center;
             color: var(--text-main);
             line-height: 1.5;
             min-height: 100vh;
+            /* Включает аппаратное ускорение скролла */
             -webkit-overflow-scrolling: touch;
         }
 
@@ -40,7 +42,8 @@
         .app-card {
             background-color: rgba(22, 27, 34, 0.95);
             border: 1px solid #30363d;
-            will-change: transform;
+            /* Убрано тяжелое размытие (blur) для производительности на смартфонах */
+            will-change: transform; /* Подсказка браузеру для оптимизации */
         }
 
         .btn-primary {
@@ -57,6 +60,7 @@
             background: rgba(13, 17, 23, 0.9);
         }
 
+        /* Плавные переходы без нагрузки на GPU */
         .fade-in {
             animation: fadeIn 0.5s ease-out;
         }
@@ -74,11 +78,11 @@
                 <div class="w-7 h-7 bg-[#32a6d3] rounded flex items-center justify-center shadow-lg">
                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-                <span class="font-bold tracking-tight text-sm uppercase">VALORTIME 2.0</span>
+                <span class="font-bold tracking-tight text-sm uppercase">ValorTime 2.0</span>
             </div>
             <div class="flex items-center space-x-6 text-xs font-medium uppercase tracking-wider text-slate-400">
                 <a href="#interface" class="hover:text-[#32a6d3]">Описание</a>
-                <a href="#download" class="text-[#32a6d3] border border-[#32a6d3]/30 px-3 py-1 rounded">СКАЧАТЬ</a>
+                <a href="#download" class="text-[#32a6d3] border border-[#32a6d3]/30 px-3 py-1 rounded">Скачать</a>
             </div>
         </div>
     </nav>
@@ -87,78 +91,75 @@
         <div class="max-w-3xl mx-auto text-center">
             <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Простой учет рабочего времени</h1>
             <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto mb-8">
-                Локальное приложение для Windows. Фиксация часов, графики и экспорт отчетов без лишних функций.
+                Локальное приложение для Windows. Фиксация рабочих часов, графики и экспорт отчетов в PDF без лишних функций.
             </p>
         </div>
     </header>
 
     <section id="interface" class="px-4 pb-20 fade-in" style="animation-delay: 0.1s;">
         <div class="max-w-5xl mx-auto">
-            <!-- Изменено: теперь flex-row всегда, а не только на md. Добавлен overflow-x-auto для безопасности -->
-            <div class="app-card rounded-lg overflow-hidden shadow-2xl flex flex-row select-none overflow-x-auto">
-                
-                <!-- Контентная часть (левая) -->
-                <!-- Изменено: добавлено min-w-[280px] чтобы блок не сжимался слишком сильно -->
-                <div class="flex-[2] p-4 md:p-6 min-h-[300px] bg-[#0d1117] min-w-[260px]">
+            <div class="app-card rounded-lg overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                <!-- Контентная часть -->
+                <div class="flex-[2] p-6 min-h-[300px] bg-[#0d1117]">
                     <div class="flex justify-between items-center mb-8">
                         <div class="flex space-x-2">
-                            <div class="w-6 h-6 border border-slate-700 rounded flex items-center justify-center text-[10px] text-slate-500 hover:bg-slate-800 cursor-pointer">&lt;</div>
-                            <span class="text-xs font-bold uppercase tracking-widest pt-1 px-4 whitespace-nowrap">МАРТ 2026</span>
-                            <div class="w-6 h-6 border border-slate-700 rounded flex items-center justify-center text-[10px] text-slate-500 hover:bg-slate-800 cursor-pointer">&gt;</div>
+                            <div class="w-6 h-6 border border-slate-700 rounded flex items-center justify-center text-[10px] text-slate-500 hover:bg-slate-800">&lt;</div>
+                            <span class="text-xs font-bold uppercase tracking-widest pt-1 px-4">МАРТ 2026</span>
+                            <div class="w-6 h-6 border border-slate-700 rounded flex items-center justify-center text-[10px] text-slate-500 hover:bg-slate-800">&gt;</div>
                         </div>
                     </div>
-                    
+                    <!-- График -->
                     <div class="h-48 flex items-end space-x-1 border-b border-slate-800 pb-1">
                         <div class="flex-1 bg-slate-800 h-[10%] opacity-20"></div>
                         <div class="flex-1 bg-slate-800 h-[10%] opacity-20"></div>
-                        <div class="flex-1 bg-[#32a6d3] h-[60%]"></div>
-                        <div class="flex-1 bg-[#32a6d3] h-[60%]"></div>
-                        <div class="flex-1 bg-[#32a6d3] h-[80%]"></div>
-                        <div class="flex-1 bg-[#32a6d3] h-[80%]"></div>
-                        <div class="flex-1 bg-[#32a6d3] h-[80%]"></div>
                         <div class="flex-1 bg-slate-800 h-[10%] opacity-20"></div>
+                        <div class="flex-1 bg-[#32a6d3] h-[60%]"></div>
+                        <div class="flex-1 bg-[#32a6d3] h-[60%]"></div>
+                        <div class="flex-1 bg-[#32a6d3] h-[80%]"></div>
+                        <div class="flex-1 bg-[#32a6d3] h-[80%]"></div>
+                        <div class="flex-1 bg-[#a3312f] h-[60%]"></div>
                         <div class="flex-1 bg-[#32a6d3] h-[80%] relative">
                             <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] whitespace-nowrap">Переработка 2ч.</div>
                         </div>
                     </div>
-                    <div class="flex justify-between mt-2 text-[9px] text-slate-500 uppercase overflow-hidden">
-                        <span>СБ 1</span><span>ВС 2</span><span>ПН 3</span><span>ВТ 4</span><span>СР 5</span><span>ЧТ 6</span><span>ПТ 7</span><span>СБ 8</span><span>ВС 9</span>
+                    <div class="flex justify-between mt-2 text-[9px] text-slate-500 uppercase">
+                        <center><span>ПН 1</span><span>ВТ 2</span><span>СР 3</span><span>ЧТ 4</span><span>ПТ 5</span><span>СБ 6</span><span>ВС 7</span><span>ПН 8</span><span>ВТ 9</span></center>
                     </div>
                 </div>
 
-                <!-- Правая панель (сайдбар) -->
-                <!-- Изменено: добавлено min-w-[160px] для фиксации ширины сайдбара -->
-                <div class="flex-1 sidebar-mockup p-4 md:p-6 space-y-6 min-w-[150px]">
+                <!-- Правая панель -->
+                <div class="flex-1 sidebar-mockup p-6 space-y-6">
                     <div>
-                        <h4 class="text-[10px] uppercase font-bold text-sky-400 mb-3 tracking-widest">ДОБАВИТЬ ДАННЫЕ</h4>
+                        <h4 class="text-[10px] uppercase font-bold text-sky-400 mb-3 tracking-widest">Добавить данные</h4>
                         <div class="space-y-3">
                             <div class="space-y-1">
-                                <label class="text-[9px] text-slate-500 select-none">Выберети дату:</label>
-                                <div class="bg-white text-slate-900 text-[10px] p-1.5 rounded flex justify-between">
+                                <label class="text-[9px] text-slate-500">Выберите дату:</label>
+                                <div class="bg-white text-slate-900 text-xs p-1.5 rounded flex justify-between">
                                     <span>14.03.2026</span>
                                     <span>📅</span>
                                 </div>
                             </div>
                             <div class="space-y-1">
-                                <label class="text-[9px] text-slate-500 select-none">Часы:</label>
-                                <div class="bg-slate-800 border border-slate-700 text-[10px] p-1.5 rounded flex justify-between italic text-slate-300">
+                                <label class="text-[9px] text-slate-500">Кол-во часов:</label>
+                                <div class="bg-slate-800 border border-slate-700 text-xs p-1.5 rounded flex justify-between italic">
                                     <span>8</span>
                                     <span>▼</span>
                                 </div>
                             </div>
-                            <button class="w-full btn-primary text-white text-[9px] font-bold py-2 rounded uppercase tracking-wider shadow-lg">ОК</button>
+                            <button class="w-full btn-primary text-white text-[11px] font-bold py-2.5 rounded uppercase tracking-wider shadow-lg active:shadow-none transition-all">Сохранить</button>
                         </div>
                     </div>
 
-                    <div class="pt-6 border-t border-slate-800 hidden sm:block">
-                        <div class="relative w-16 h-16 mx-auto">
+                    <div class="pt-6 border-t border-slate-800">
+                        <div class="relative w-20 h-20 mx-auto">
                             <svg viewBox="0 0 36 36" class="w-full h-full transform -rotate-90">
                                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1e293b" stroke-width="3" />
                                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#32a6d3" stroke-width="3" stroke-dasharray="75, 100" />
                                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#a3312f" stroke-width="3" stroke-dasharray="25, 100" stroke-dashoffset="-75" />
                             </svg>
                             <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                <span class="text-[9px] font-bold">89ч</span>
+                                <span class="text-[10px] font-bold">89 ч.</span>
+                                <span class="text-[7px] text-slate-500 uppercase">Всего</span>
                             </div>
                         </div>
                     </div>
